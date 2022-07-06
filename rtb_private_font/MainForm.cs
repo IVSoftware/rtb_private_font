@@ -94,5 +94,18 @@ namespace rtb_private_font
                 richTextBox1.AppendText($"SelectionFont={richTextBox1.SelectionFont.OriginalFontName}{Environment.NewLine}");
             }
         }
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (components != null)
+                {
+                    components.Dispose();
+                }
+                // Dispose the PrivateFontCollection
+                privateFontCollection.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }
